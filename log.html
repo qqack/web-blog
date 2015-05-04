@@ -14,10 +14,10 @@
 <style type="text/css" id="custom-background-css">
 body.custom-background { background-image: url('./images/bg2.jpg'); background-repeat: no-repeat; background-position: top left; background-attachment: fixed; }
 </style>
-<meta property="qc:admins" content="10353136566043536375" /><title> happy&#8211;球球</title>
+<meta property="qc:admins" content="10353136566043536375" /><title>留言板</title>
 <!--控制小人说话-->
-<script>
-window._deel = {name: '残月博客',url: 'http://www.84sec.com/wp-content/themes/yusi', ajaxpager: 'on', commenton: 0, roll: [0,0]}
+<<script>
+window._deel = {name: '球球博客',url: 'log.html', ajaxpager: 'on', commenton: 0, roll: [0,0]}
 </script>
 
 <!--[if lt IE 9]><script src="http://www.84sec.com/wp-content/themes/yusi/js/html5.js"></script><![endif]-->
@@ -49,9 +49,6 @@ window._deel = {name: '残月博客',url: 'http://www.84sec.com/wp-content/theme
     </ul>
   </li>
   <li id="menu-item-127" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-127"><a href="#">留言板</a>
-    <ul class="sub-menu">
-  <li id="menu-item-792" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-792"><a href="#">关于</a></li>
-</ul>
 </li>
 </ul>
 </div></div>
@@ -66,7 +63,7 @@ window._deel = {name: '残月博客',url: 'http://www.84sec.com/wp-content/theme
 <p class="auth-span">
     <span class="muted"><i class="fa fa-user"></i> <a href="#">admin</a></span>
     <span class="muted"><i class="fa fa-clock-o"></i> n天前</span>  <span class="muted"><i class="fa fa-eye"></i> 20浏览</span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="#">0评论</a></span><span class="muted">
-<a href="javascript:;" data-action="ding" data-id="1350" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>个赞</a></span></p>
+<a href="javascript:;" data-action="ding" data-id="1350" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count" id="zan0">0</span>个赞</a></span></p>
 </article>
 
 <article class="excerpt" id="lvc">
@@ -78,7 +75,7 @@ window._deel = {name: '残月博客',url: 'http://www.84sec.com/wp-content/theme
       <p class="auth-span">
     <span class="muted"><i class="fa fa-user"></i> <a href="#">admin</a></span>
     <span class="muted"><i class="fa fa-clock-o"></i> n天前</span>  <span class="muted"><i class="fa fa-eye"></i> n浏览</span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="#">0评论</a></span><span class="muted">
-<a href="javascript:;" data-action="ding" data-id="1350" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>个赞</a></span></p>
+<a href="javascript:;" data-action="ding" data-id="1350" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count" id="zan1">0</span>个赞</a></span></p>
 </article>
 
 <article class="excerpt" id="cajian">
@@ -90,7 +87,7 @@ window._deel = {name: '残月博客',url: 'http://www.84sec.com/wp-content/theme
       <p class="auth-span">
     <span class="muted"><i class="fa fa-user"></i> <a href="#">admin</a></span>
     <span class="muted"><i class="fa fa-clock-o"></i> n天前</span>  <span class="muted"><i class="fa fa-eye"></i> 20浏览</span> <span class="muted"><i class="fa fa-comments-o"></i> <a target="_blank" href="#">0评论</a></span><span class="muted">
-<a href="javascript:;" data-action="ding" data-id="1350" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count">0</span>个赞</a></span></p>
+<a href="javascript:;" data-action="ding" data-id="1350" id="Addlike" class="action"><i class="fa fa-heart-o"></i><span class="count" id="zan2">0</span>个赞</a></span></p>
 </article>
 
 
@@ -120,5 +117,25 @@ var isindex=false;var title="《我的心情》";var visitor="亲";
     <div id="message">加载中……</div>
     <div id="mumu" class="mumu"></div>
 </div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function ($) {
+    
+    $("#zan0").click(function(){
+       var zan = 1;
+        $("#zan0").text(zan);
+    });
+    $("#zan1").click(function(){
+       var zan = 1;
+        $("#zan1").text(zan);
+    });
+    $("#zan2").click(function(){
+       var zan = 1;
+        $("#zan2").text(zan);
+    });
+  });
+</script>
+
+
 </body>
 </html>

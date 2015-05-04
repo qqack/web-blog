@@ -1,0 +1,209 @@
+<!-- <html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1, 
+        minimum-scale=1.0, maximum-scale=1, user-scalable=no">
+        <title>留言板</title>
+        <script src="http://7u2n9p.com1.z0.glb.clouddn.com/jquery/2.1.3/jquery.min.js?7918"></script>
+        <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+    <div class="topic">欢迎来到我的留言板<div>
+</body>
+</html> -->
+<?php
+date_default_timezone_set('PRC');
+$conn=mysql_connect("localhost","root","");
+$db=mysql_select_db("yy",$conn);
+if(isset($_POST['button']))
+{
+if(isset($_POST["user"]) && isset($_POST["pwd"]) && isset($_POST["liuyan"]))
+{
+$user=$_POST["user"];
+$pwd=$_POST["pwd"];
+$liuyan=$_POST["liuyan"];
+$liuyan=str_replace("\n","<br>",str_replace(" ","&nbsp;",$liuyan));
+$date=date("Y-m-d-H:i:s");
+$sql="INSERT INTO tab(user,pwd,date,liuyan) VALUES('$user','$pwd','$date','$liuyan')";
+$queryliuy=mysql_query($sql,$conn);
+}
+}
+
+?>
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1, 
+        minimum-scale=1.0, maximum-scale=1, user-scalable=no">
+        <title>留言板</title>
+        <script src="http://7u2n9p.com1.z0.glb.clouddn.com/jquery/2.1.3/jquery.min.js?7918"></script>
+        <script type="text/javascript" src="./main.js"></script>
+
+<script language="JavaScript">
+function check()
+{
+   if(form1.user.value==""){alert("请输入用户名");
+    form1.user.focus();
+    return false;
+   }
+
+  if(form1.pwd.value==""){alert("请输入密码");
+    form1.pwd.focus();
+    return false;
+   }
+     if(form1.liuyan.value==""){alert("请输入留言");
+    form1.liuyan.focus();
+    return false;
+   }
+else
+{alert("留言成功");}
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="" onSubmit="return check();">
+  <p>&nbsp;</p>
+  <p>
+    <label>用户名：
+      <input type="text" name="user" id="user" />
+    </label>
+  </p>
+  <p>
+    <label>密　码：
+      <input type="password" name="pwd" id="pwd" />
+    </label>
+  </p>
+  <p>
+   <label>留　言：
+      <textarea name="liuyan" id="liuyan" cols="45" rows="5"></textarea><font color=red>*不高于100个文字</font>
+    </label>
+    <label></p>
+      <input type="submit" name="button" id="button" value="发表留言 " />
+    </label>
+  </p>
+</form>
+<hr/>
+<?php
+$pagesize=5;
+$url=$_SERVER["REQUEST_URI"];
+$url=parse_url($url);
+$url=$url['path'];
+echo $url;
+$numq=mysql_query("SELECT * FROM `tab`");
+$num =mysql_num_rows($numq);
+
+if(isset($_GET['page'])){
+$pageval=$_GET['page'];
+
+}
+if($num >$pagesize){
+ if($pageval<1)
+ {
+  $pageval=1;
+  echo "<script>alert('已经是第一页了！');</script>";
+ }
+
+ if($num<$pagesize)
+ {
+  $pagesize=$num;
+ }
+$pageyeshu=ceil($num/$pagesize);
+echo "总页数：".$pageyeshu."页&nbsp;&nbsp;";
+
+
+if($pageval>$pageyeshu)
+{
+$pageval=$pageyeshu;
+echo "<script>alert('已到最后页面！');return false</script>";
+}
+ $page=($pageval-1)*$pagesize;
+echo "共".$num."条";
+echo " <a href=$url?page=".($pageval-1).">上一页</a> <a href=$url?page=".($pageval)."></a>";
+
+
+echo "<a href=$url?page=".($pageval+1).">下一页</a>";
+$SQL="SELECT * FROM tab order by id desc limit $page,$pagesize";
+$result = mysql_query($SQL,$conn);
+
+while($rowliuy=mysql_fetch_array($result))
+{
+echo "<table border=0 bgcolor=#add33f cellspacing=1 cellpadding=5 width=800><tr bgcolor=#eff3ff><td>编号：NO";
+echo $rowliuy['id'];
+echo ".&nbsp;&nbsp;&nbsp;用户名<font color=red>";
+echo $rowliuy['user'];
+echo "</font>:</td></tr><tr><td>留言内容:<br><font color=red>";
+echo $rowliuy['liuyan'];
+echo " &nbsp;&nbsp;&nbsp;</font><a href='?edit=$rowliuy[user]'>修改</a>|||||<a href='?del=$rowliuy[user]'>删除</a>";
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留言时间:".$rowliuy['date']."</td></tr></table>";
+}
+}
+if(isset($_GET['del']))
+{
+$del=$_GET['del'];
+mysql_query("DELETE from tab where user=$del");
+}
+
+?>
+<a href="liuy.php">返回</a>
+<?php
+if(!isset($_GET['yinc']))
+{
+
+
+if(isset($_GET['edit']))
+{
+
+$edit=$_GET['edit'];
+?>
+<br><br><br>
+<h1>更新数据页面：</h1>
+<form id="form2" name="form2" method="post" action="">
+  <p>&nbsp;</p>
+  <p>
+    <label>用户名：
+      <input type="text" name="usern" id="usern" value="<?php echo $edit;?>" readonly="readonly" >
+    </label>
+  </p>
+  <p>
+    <label>新密码：
+      <input type="password" name="pwdn" id="pwdn">
+    </label>
+  </p>
+  <p>
+    <label>新留言：
+      <textarea name="liuyann" id="liuyann" cols="45" rows="5"></textarea>
+    </label>
+ &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </p>
+  <p>
+    <label>
+      <input type="submit" name="button" id="button" value="确定 " />
+    </label>
+    <a href='?yinc=yinc'>隐藏更新页面</a>
+  </p>
+</form>
+<hr/>
+<?php
+}
+}
+if(isset($_POST["usern"]))
+{
+$usern=$_POST["usern"];
+$pwdn=$_POST["pwdn"];
+$liuyann=$_POST["liuyann"];
+$daten=date("Y-m-d-H:i:s");
+mysql_query("update tab set pwd='$pwdn',liuyan='$liuyann',date='$daten' where user='$usern'");
+echo "更新成功";
+echo $usern."<br>";
+echo $liuyann."<br>";
+echo $daten;
+}
+
+?>
+
+<hr/>
+</body>
+</html>
