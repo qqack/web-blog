@@ -57,9 +57,9 @@ ul li{list-style:none;}
 }
 #sidebar{
 	float: right;
-	width: 180px;
-	padding-right: 100px;
-	padding-bottom : 110px;  
+	width: 250px;
+	padding-bottom : 110px;
+	margin-top: -320px;  
 	background:#FFCCCC;
 		filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6;
 		margin-right: 15px;
@@ -69,7 +69,7 @@ ul li{list-style:none;}
 
 }
 .content{
-	width: 75%;
+	width: 95%;
 	padding-right:10px; 
 	border-bottom: #666666 1px solid;
 	margin-left: 15px;

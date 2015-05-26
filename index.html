@@ -6,9 +6,13 @@
         <title>My Blogs</title>
         <link rel="stylesheet" type="text/css" href="./style/main.css"/>
         <script src="http://7u2n9p.com1.z0.glb.clouddn.com/jquery/2.1.3/jquery.min.js?7918"></script>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./main.js"></script>
     </head>
-    <body>        
+    <body>  
+    	<div class="container">      
     	<canvas id="snow_canvas" style="position:fixed;z-index: 5000; top:0px;left:0px;pointer-events:none;"></canvas>
         <div id="banner">
             <div id="mmbanner">
@@ -42,6 +46,9 @@
             </div>
         </div>
 
+     <div class="row">
+
+      <!-- <div class="col-md-3">
         <div class="pageout">
             <div id="sidebar">
                 <div id="mmsidebar">
@@ -65,8 +72,10 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
+       </div>     -->
 
+       <div class="col-md-12">
         <div class ="content" style="margin-bottom: 20px;"><!--日志-->
             <div class="content-top"></div>
             <div class="diarytitle">2015-3-26|若沁儿</div>
@@ -87,9 +96,7 @@
             <div class="diaryabout"><a href="#">赞(0)</a>|<a href="#">评论(0)</a>|<a href="#">类别(闲时随笔)</a>|发表于19：43
             </div>
         </div>
-
-        	
-
+    
 		<div class ="content" style="margin-bottom: 20px;"><!--日志-->
             <div class="content-top"></div>
             <div class="diarytitle">2015-4-7|若沁儿</div>
@@ -99,6 +106,49 @@
             <div class="diaryabout"><a href="#">赞(0)</a>|<a href="#">评论(0)</a>|<a href="#">类别(闲时随笔)</a>|发表于19：43
             </div>
         </div>
+       
+
+       	<div class ="content" style="margin-bottom: 20px;"><!--日志-->
+            <div class="content-top"></div>
+            <div class="diarytitle">2015-5-26|若沁儿</div>
+            <div class="diarycontent">
+                <p> 总是爱想多，什么时候才会真正地长大！开始去做好那个完美的自己！不要再感到空虚和难过！</p>
+            </div>
+            <div class="diaryabout"><a href="#">赞(0)</a>|<a href="#">评论(0)</a>|<a href="#">类别(闲时随笔)</a>|发表于21：23
+            </div>
+        </div>
+    </div>
+   </div>
+       
+    <!-- <div class=""col-xs-8 col-md-4"">
+        <div class="pageout">
+            <div id="sidebar">
+                <div id="mmsidebar">
+                    <div class="list">
+                        <div class="list-title">
+                            <h1><img src="../images/1.jpg"  alt="" class="arrow-up"/>个人档案</h1>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="list-memu"></div>
+                    </div>
+                    <div class="list-content">
+                        <div class="mm-list-content">
+                            <img src="./images/me1.jpg" alt="我型我秀"/>
+                        </div>
+                        <hr />
+                        <div class="aboutme">
+                            呢称：球球<br />
+                            城市：湘潭<br />
+                            if you are doing you best,you won't have any time to worry about failue!<br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>     -->
+
+
         <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $(".navphoto").click(function(){
